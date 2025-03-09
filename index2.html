@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/email.png">
+    <title>E-Mail senden</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>E-Mail senden</h1>
+        <form action="https://myfirstwebsite.lima-city.at/senden/send_email.php" method="POST" enctype="multipart/form-data">
+<label for="Adresse">Empfänger-Adressen (durch Komma getrennt):</label>
+<input type="text" id="Adresse" name="Adresse" placeholder="z.B. beispiel@email.com, beispiel2@email.com" required>
+
+            <label for="Betreff">Betreff:</label>
+            <input type="text" id="Betreff" name="Betreff" placeholder="Gib den Betreff ein" required>
+
+            <label for="Text">Nachricht:</label>
+            <textarea id="Text" name="Text" rows="5" placeholder="Schreibe deine Nachricht hier..." required></textarea>
+
+            <label for="file">Foto hochladen (optional):</label>
+            <input type="file" id="file" name="file" accept="image/*">
+
+            <button type="submit" id="Button">E-Mail senden</button>
+        </form>
+        <div class="footer">© 2025 Jakob. Alle Rechte vorbehalten.</div>
+    </div>
+
+    <script>
+        const adresseField = document.getElementById('Adresse');
+        const betreffField = document.getElementById('Betreff');
+        const messageField = document.getElementById('Text');
+
+        // Werte aus localStorage laden (falls vorhanden)
+        window.onload = function() {
+            if (localStorage.getItem('savedAdresse')) {
+                adresseField.value = localStorage.getItem('savedAdresse');
+            }
+            if (localStorage.getItem('savedBetreff')) {
+                betreffField.value = localStorage.getItem('savedBetreff');
+            }
+            if (localStorage.getItem('savedMessage')) {
+                messageField.value = localStorage.getItem('savedMessage');
+            }
+        };
+
+        // Funktion zum Speichern der Eingaben im localStorage
+        function saveToLocalStorage(field, key) {
+            field.addEventListener('input', function() {
+                localStorage.setItem(key, field.value);
+            });
+        }
+
+        // Alle Felder überwachen und speichern
+        saveToLocalStorage(adresseField, 'savedAdresse');
+        saveToLocalStorage(betreffField, 'savedBetreff');
+        saveToLocalStorage(messageField, 'savedMessage');
+    </script>
+</body>
+</html>
