@@ -24,10 +24,8 @@
     "copyright": "© 2025 Jakob",
     "win": {
       "icon": "icon.ico",
-      "target": [
-        "nsis",
-        "portable"
-    ],
+      "target": ["nsis", "portable"]
+    },
     "linux": {
       "icon": "icon.png",
       "category": "Utility",
