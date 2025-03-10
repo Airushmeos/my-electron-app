@@ -27,7 +27,7 @@
       "target": ["nsis", "portable"]
     },
     "nsis": {
-      "language": "German"
+      "language": "de_DE"
     },
     "linux": {
       "icon": "icon.png",
