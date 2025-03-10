@@ -47,15 +47,21 @@ function createWindowroblox() {
             ]
         },
         {
-        label: "E-mail",
-        submenu: [
-                {
-                    label: "E-Mail",
-                    click() {
-                        createWindowemail();
+            label: "Seiten",
+                submenu: [
+                    {
+                        label: "E-Mail",
+                        click() {
+                            createWindowemail();
+                        }
+                    },
+                    {
+                        label: "Laden"
+                        click() {
+                            createWindowladen();
+                        }
                     }
-                }
-        ]
+                ]
         }
     ]);
     Menu.setApplicationMenu(menu);
@@ -108,15 +114,88 @@ function createWindowemail() {
             ]
         },
         {
-                    label: "Roblox",
-        submenu: [
-                {
-                    label: "Roblox",
-                    click() {
-                        createWindowroblox();
+            label: "Seiten",
+                submenu: [
+                    {
+                        label: "Roblox",
+                        click() {
+                                createWindowroblox();
+                        }
+                    },
+                    {
+                        label: "Laden"
+                        click() {
+                            createWindowladen();
+                        }
                     }
-                }
-        ]
+                ]
+        }
+    ]);
+    Menu.setApplicationMenu(menu);
+}
+
+function createWindowladen() {
+    const win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+
+    // Zweites Fenster (optional, falls benötigt)
+    // const win2 = new BrowserWindow({
+    //     width: 800,
+    //     height: 600,
+    //     webPreferences: {
+    //         nodeIntegration: true
+    //     }
+    // });
+
+    win.loadURL("https://myfirstwebiste.lima-city.at/laden");
+    // win2.loadFile("index.html"); // Lädt index.html, falls aktiv
+
+    // Menüleiste hinzufügen
+    const menu = Menu.buildFromTemplate([
+        {
+            label: "Datei",
+            submenu: [
+                { role: "quit", label: "Beenden" }
+            ]
+        },
+        {
+            label: "Hilfe",
+            submenu: [
+                {
+                    label: "Website besuchen",
+                    click() {
+                        shell.openExternal("https://myfirstwebsite.lima-city.at/laden");
+                    }
+                },
+                // {
+                //     label: "Über",
+                //     click() {
+                //         createAboutWindow();
+                //     }
+                // }
+            ]
+        },
+        {
+            label: "Seiten",
+                submenu: [
+                    {
+                        label: "Roblox",
+                        click() {
+                                createWindowroblox();
+                        }
+                    },
+                    {
+                        label: "E-Mail",
+                        click() {
+                            createWindowemail();
+                        }
+                    }
+                ]
         }
     ]);
     Menu.setApplicationMenu(menu);
