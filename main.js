@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, shell, ipcMain } = require("electron");
 
-function createWindow() {
+function createWindowroblox() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
@@ -35,7 +35,7 @@ function createWindow() {
                 {
                     label: "Website besuchen",
                     click() {
-                        shell.openExternal("https://myfirstwebsite.lima-city.at");
+                        shell.openExternal("https://myfirstwebsite.lima-city.at/roblox/sehen.html");
                     }
                 },
                 {
@@ -97,7 +97,7 @@ function createWindowemail() {
                 {
                     label: "Roblox",
                     click() {
-                        createWindow();
+                        createWindowroblox();
                     }
                 }
                 // {
@@ -126,4 +126,4 @@ function createWindowemail() {
 //     aboutWin.loadFile("about.html");
 // }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(createWindowemail);
