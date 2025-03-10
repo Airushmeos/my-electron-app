@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: red;
+            font-size: 14px;
+        }
+        .userData {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="userId" placeholder="User ID" required>
+            <input type="password" id="password" placeholder="Passwort" required>
+            <button type="submit">Einloggen</button>
+        </form>
+        <p id="errorMessage" class="message" style="display:none;">Benutzername oder Passwort ist falsch!</p>
+    </div>
+
+    <div id="userData" class="userData" style="display:none;">
+        <h3>Benutzerdaten</h3>
+        <p><strong>Benutzername:</strong> <span id="username"></span></p>
+        <p><strong>Level:</strong> <span id="level"></span></p>
+        <p><strong>Punkte:</strong> <span id="points"></span></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const userId = document.getElementById("userId").value;
+            const password = document.getElementById("password").value;
+
+            // Abrufen der Anmeldedaten (Benutzername und Passwort) und Validierung
+            fetch(`https://myfirstwebsite.lima-city.at/roblox/laod.php?action=login&userId=${userId}&password=${password}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        const playerData = data.data;  // Spieler-Daten aus data/{userId}.json (z.B. Level, Punkte)
+
+                        // Erfolgreicher Login, Benutzer-Daten anzeigen
+                        //alert("Erfolgreich eingeloggt!");
+
+                        // Daten anzeigen
+                        document.getElementById("username").innerText = playerData.username;  // Beispiel: Benutzername
+                        document.getElementById("level").innerText = playerData.level;  // Beispiel: Level
+                        document.getElementById("points").innerText = playerData.points;  // Beispiel: Punkte
+                        document.getElementById("userData").style.display = "block";  // Benutzer-Daten sichtbar machen
+                        document.getElementById("loginForm").style.display = "none";  // Login-Formular ausblenden
+                    } else {
+                        document.getElementById("errorMessage").style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler:', error);
+                    alert("Fehler beim Laden der Daten.");
+                });
+        });
+    </script>
+
+</body>
+</html>
