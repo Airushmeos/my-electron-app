@@ -26,9 +26,6 @@
       "icon": "icon.ico",
       "target": ["nsis", "portable"]
     },
-    "nsis": {
-      "language": "de_DE"
-    },
     "linux": {
       "icon": "icon.png",
       "category": "Utility",
