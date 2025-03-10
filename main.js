@@ -18,7 +18,7 @@ function createWindow() {
     //     }
     // });
 
-    win.loadFile("index2.html"); // Lädt index2.html
+    win.loadFile("index3.html"); // Lädt index2.html
     // win2.loadFile("index.html"); // Lädt index.html, falls aktiv
 
     // Menüleiste hinzufügen
