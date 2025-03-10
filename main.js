@@ -38,12 +38,6 @@ function createWindowroblox() {
                         shell.openExternal("https://myfirstwebsite.lima-city.at/roblox/sehen.html");
                     }
                 },
-                {
-                    label: "E-Mail",
-                    click() {
-                        createWindowemail();
-                    }
-                }
                 // {
                 //     label: "Über",
                 //     click() {
@@ -51,6 +45,17 @@ function createWindowroblox() {
                 //     }
                 // }
             ]
+        },
+        {
+        label: "E-mail",
+        submenu: [
+                {
+                    label: "E-Mail",
+                    click() {
+                        createWindowemail();
+                    }
+                }
+        ]
         }
     ]);
     Menu.setApplicationMenu(menu);
@@ -94,12 +99,6 @@ function createWindowemail() {
                         shell.openExternal("https://myfirstwebsite.lima-city.at/senden");
                     }
                 },
-                {
-                    label: "Roblox",
-                    click() {
-                        createWindowroblox();
-                    }
-                }
                 // {
                 //     label: "Über",
                 //     click() {
@@ -107,6 +106,17 @@ function createWindowemail() {
                 //     }
                 // }
             ]
+        },
+        {
+                    label: "Roblox",
+        submenu: [
+                {
+                    label: "Roblox",
+                    click() {
+                        createWindowroblox();
+                    }
+                }
+        ]
         }
     ]);
     Menu.setApplicationMenu(menu);
