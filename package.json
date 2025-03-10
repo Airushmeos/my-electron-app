@@ -13,7 +13,7 @@
   },
   "license": "ISC",
   "description": "Meine Electron App für Windows.",
-  "homepage": "https://myfirstwebiste.lima-city.at",
+  "homepage": "https://myfirstwebsite.lima-city.at",
   "devDependencies": {
     "electron": "^34.3.0",
     "electron-builder": "^25.1.8"
