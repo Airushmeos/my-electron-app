@@ -35,7 +35,7 @@ function createWindow() {
                 {
                     label: "Website besuchen",
                     click() {
-                        shell.openExternal("https://myfirstwebiste.lima-city.at");
+                        shell.openExternal("https://myfirstwebsite.lima-city.at");
                     }
                 },
                 // {
