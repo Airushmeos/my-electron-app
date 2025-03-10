@@ -12,7 +12,7 @@
     "email": "jakob.holzer03@gmail.com"
   },
   "license": "ISC",
-  "description": "Meine Electron App für Raspberry Pi",
+  "description": "Meine Electron App für Windows.",
   "homepage": "https://myfirstwebiste.lima-city.at",
   "devDependencies": {
     "electron": "^34.3.0",
