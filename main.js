@@ -14,7 +14,8 @@ function createWindowroblox() {
         webPreferences: { nodeIntegration: true }
     });
 
-    robloxWindow.loadFile("index3.html");
+//    robloxWindow.loadFile("index3.html");
+    robloxWindow.loadURL("https://myfirstwebsite.lima-city.at/roblox/sehen.html");
 
     robloxWindow.on("closed", () => {
         robloxWindow = null;
