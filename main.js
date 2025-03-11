@@ -52,7 +52,7 @@ function createWindowladen() {
         webPreferences: { nodeIntegration: true }
     });
 
-    ladenWindow.loadURL("https://myfirstwebiste.lima-city.at/laden");
+    ladenWindow.loadURL("https://myfirstwebsite.lima-city.at/laden");
 
     ladenWindow.on("closed", () => {
         ladenWindow = null;
