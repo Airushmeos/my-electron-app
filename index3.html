@@ -62,6 +62,7 @@
         <p><strong>Benutzername:</strong> <span id="username"></span></p>
         <p><strong>Level:</strong> <span id="level"></span></p>
         <p><strong>Punkte:</strong> <span id="points"></span></p>
+        <p><strong>Gestorben:</strong> <span id="deth"></span></p>
     </div>
 
     <script>
@@ -85,6 +86,7 @@
                         document.getElementById("username").innerText = playerData.username;  // Beispiel: Benutzername
                         document.getElementById("level").innerText = playerData.level;  // Beispiel: Level
                         document.getElementById("points").innerText = playerData.points;  // Beispiel: Punkte
+                        document.getElementById("deth").innerText = playerData.deth;  // Beispiel: Punkte
                         document.getElementById("userData").style.display = "block";  // Benutzer-Daten sichtbar machen
                         document.getElementById("loginForm").style.display = "none";  // Login-Formular ausblenden
                     } else {
