@@ -1,218 +1,96 @@
-const { app, BrowserWindow, Menu, shell, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, shell } = require("electron");
+
+let robloxWindow, emailWindow, ladenWindow; // Variablen für Fenster
 
 function createWindowroblox() {
-    const win = new BrowserWindow({
+    if (robloxWindow) {
+        robloxWindow.focus();
+        return;
+    }
+
+    robloxWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
+        webPreferences: { nodeIntegration: true }
     });
 
-    // Zweites Fenster (optional, falls benötigt)
-    // const win2 = new BrowserWindow({
-    //     width: 800,
-    //     height: 600,
-    //     webPreferences: {
-    //         nodeIntegration: true
-    //     }
-    // });
+    robloxWindow.loadFile("index3.html");
 
-    win.loadFile("index3.html"); // Lädt index2.html
-    // win2.loadFile("index.html"); // Lädt index.html, falls aktiv
-
-    // Menüleiste hinzufügen
-    const menu = Menu.buildFromTemplate([
-        {
-            label: "Datei",
-            submenu: [
-                { role: "quit", label: "Beenden" }
-            ]
-        },
-        {
-            label: "Hilfe",
-            submenu: [
-                {
-                    label: "Website besuchen",
-                    click() {
-                        shell.openExternal("https://myfirstwebsite.lima-city.at/roblox/sehen.html");
-                    }
-                },
-                // {
-                //     label: "Über",
-                //     click() {
-                //         createAboutWindow();
-                //     }
-                // }
-            ]
-        },
-        {
-            label: "Seiten",
-                submenu: [
-                    {
-                        label: "E-Mail",
-                        click() {
-                            createWindowemail();
-                        }
-                    },
-                    {
-                        label: "Laden"
-                        click() {
-                            createWindowladen();
-                        }
-                    }
-                ]
-        }
-    ]);
-    Menu.setApplicationMenu(menu);
+    robloxWindow.on("closed", () => {
+        robloxWindow = null;
+    });
 }
 
 function createWindowemail() {
-    const win = new BrowserWindow({
+    if (emailWindow) {
+        emailWindow.focus();
+        return;
+    }
+
+    emailWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
+        webPreferences: { nodeIntegration: true }
     });
 
-    // Zweites Fenster (optional, falls benötigt)
-    // const win2 = new BrowserWindow({
-    //     width: 800,
-    //     height: 600,
-    //     webPreferences: {
-    //         nodeIntegration: true
-    //     }
-    // });
+    emailWindow.loadFile("index2.html");
 
-    win.loadFile("index2.html"); // Lädt index2.html
-    // win2.loadFile("index.html"); // Lädt index.html, falls aktiv
-
-    // Menüleiste hinzufügen
-    const menu = Menu.buildFromTemplate([
-        {
-            label: "Datei",
-            submenu: [
-                { role: "quit", label: "Beenden" }
-            ]
-        },
-        {
-            label: "Hilfe",
-            submenu: [
-                {
-                    label: "Website besuchen",
-                    click() {
-                        shell.openExternal("https://myfirstwebsite.lima-city.at/senden");
-                    }
-                },
-                // {
-                //     label: "Über",
-                //     click() {
-                //         createAboutWindow();
-                //     }
-                // }
-            ]
-        },
-        {
-            label: "Seiten",
-                submenu: [
-                    {
-                        label: "Roblox",
-                        click() {
-                                createWindowroblox();
-                        }
-                    },
-                    {
-                        label: "Laden"
-                        click() {
-                            createWindowladen();
-                        }
-                    }
-                ]
-        }
-    ]);
-    Menu.setApplicationMenu(menu);
+    emailWindow.on("closed", () => {
+        emailWindow = null;
+    });
 }
 
 function createWindowladen() {
-    const win = new BrowserWindow({
+    if (ladenWindow) {
+        ladenWindow.focus();
+        return;
+    }
+
+    ladenWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
+        webPreferences: { nodeIntegration: true }
     });
 
-    // Zweites Fenster (optional, falls benötigt)
-    // const win2 = new BrowserWindow({
-    //     width: 800,
-    //     height: 600,
-    //     webPreferences: {
-    //         nodeIntegration: true
-    //     }
-    // });
+    ladenWindow.loadURL("https://myfirstwebiste.lima-city.at/laden");
 
-    win.loadURL("https://myfirstwebiste.lima-city.at/laden");
-    // win2.loadFile("index.html"); // Lädt index.html, falls aktiv
-
-    // Menüleiste hinzufügen
-    const menu = Menu.buildFromTemplate([
-        {
-            label: "Datei",
-            submenu: [
-                { role: "quit", label: "Beenden" }
-            ]
-        },
-        {
-            label: "Hilfe",
-            submenu: [
-                {
-                    label: "Website besuchen",
-                    click() {
-                        shell.openExternal("https://myfirstwebsite.lima-city.at/laden");
-                    }
-                },
-                // {
-                //     label: "Über",
-                //     click() {
-                //         createAboutWindow();
-                //     }
-                // }
-            ]
-        },
-        {
-            label: "Seiten",
-                submenu: [
-                    {
-                        label: "Roblox",
-                        click() {
-                                createWindowroblox();
-                        }
-                    },
-                    {
-                        label: "E-Mail",
-                        click() {
-                            createWindowemail();
-                        }
-                    }
-                ]
-        }
-    ]);
-    Menu.setApplicationMenu(menu);
+    ladenWindow.on("closed", () => {
+        ladenWindow = null;
+    });
 }
 
-// function createAboutWindow() {
-//     const aboutWin = new BrowserWindow({
-//         width: 300,
-//         height: 200,
-//         title: "Über",
-//         resizable: false,
-//         modal: true,
-//         parent: BrowserWindow.getFocusedWindow(),
-//         webPreferences: { nodeIntegration: true }
-//     });
+// 📌 **Menüleiste definieren**
+const menuTemplate = [
+    {
+        label: "Datei",
+        submenu: [{ role: "quit", label: "Beenden" }]
+    },
+    {
+        label: "Hilfe",
+        submenu: [
+            {
+                label: "Website besuchen",
+                click: () => shell.openExternal("https://myfirstwebsite.lima-city.at")
+            }
+        ]
+    },
+    {
+        label: "Seiten",
+        submenu: [
+            { label: "Roblox", click: createWindowroblox },
+            { label: "E-Mail", click: createWindowemail },
+            { label: "Laden", click: createWindowladen }
+        ]
+    }
+];
 
-//     aboutWin.loadFile("about.html");
-// }
+// 🚀 **App starten**
+app.whenReady().then(() => {
+    createWindowemail();
+    Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
+});
 
-app.whenReady().then(createWindowemail);
+// 🔄 **Fenster bei MacOS wiederherstellen**
+app.on("activate", () => {
+    if (!emailWindow) createWindowemail();
+});
